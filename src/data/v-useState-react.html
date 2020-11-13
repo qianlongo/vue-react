@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+    const UseState = () => {
+      const [ state, setState ] = React.useState({
+        name: 'qianlongo',
+        sex: 'boy'
+      })
+
+      const [ count, setCount ] = React.useState(0)
+      
+      const onStartTimer = () => {
+        let timer = null
+
+        clearInterval(timer)
+        timer = setInterval(() => {
+          setCount((num) => num + 1)
+        }, 300)
+      }
+
+      return (
+        <div className="use-state">
+          <button onClick={ onStartTimer }>开始计时</button>
+          <p>name: { state.name }</p>
+          <p>sex: { state.sex }</p>
+          <p>count: { count }</p>
+        </div>
+      )
+    }
+    const App = () => {
+      return (
+        <div className="layout">
+          <UseState />
+        </div>
+      )
+    }
+
+    ReactDOM.render(
+      <App />,
+      document.getElementById('app')
+    );
+
+  </script>
+</body>
+
+</html>
