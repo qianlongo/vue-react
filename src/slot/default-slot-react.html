@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+      // 定义组件
+      const Card = (props) => {
+        const { title, children } = props
+
+        return (
+          <div className="card">
+            <div className="title">{ title }</div>
+            <div className="body">
+              { children }
+            </div>
+          </div>
+        )
+      }
+
+      // 使用组件
+      const UseCard = () => {
+        return (<Card title="qianlongo">
+          <div className="default-slot">我是默认插槽</div>
+          <div className="default-slot-2">我是默认插槽2</div>
+        </Card>)
+      }
+
+      ReactDOM.render(
+        <UseCard />,
+        document.getElementById('app')
+      );
+
+    </script>
+  </body>
+</html>
