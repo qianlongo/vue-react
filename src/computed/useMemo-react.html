@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+    const UseMemo = () => {
+      const [ name, setName ] = React.useState('qianlongo1')
+      const [ sex, setSex ] = React.useState('boy')
+      const [ count, setCount ] = React.useState(0)
+      
+      const onChangeName = () => setName('qianlongo2')
+      const onChangeSex = () => setSex('girl')
+      const concatNameSex = React.useMemo(() => name + '---' + count, [ name, count ])
+
+      return (
+        <div className="use-state">
+          <button onClick={ onChangeName }>修改name属性</button>
+          <button onClick={ onChangeSex }>修改sex属性</button>
+          <p>name: { name }</p>
+          <p>sex: { sex }</p>
+          <p>计算属性: { concatNameSex }</p>
+        </div>
+      )
+    }
+    const App = () => {
+      return (
+        <div className="layout">
+          <UseMemo />
+        </div>
+      )
+    }
+
+    ReactDOM.render(
+      <App />,
+      document.getElementById('app')
+    );
+
+  </script>
+</body>
+
+</html>
