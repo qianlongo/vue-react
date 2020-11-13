@@ -19,7 +19,9 @@
       const [ sex, setSex ] = React.useState('boy')
       const [ count, setCount ] = React.useState(0)
       
-      const onChangeName = () => setName('qianlongo2')
+      const onChangeName = () => {
+        setName('qianlongo2')
+      }
       const onChangeSex = () => setSex('girl')
       const concatNameSex = React.useMemo(() => name + '---' + count, [ name, count ])
 
