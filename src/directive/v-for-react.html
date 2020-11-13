@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+    // 定义组件
+    const Vfor = (props) => {
+      const { list } = props
+
+      return (
+        <ul>
+          {
+            list.map((it) => {
+              return <li>{ it.name }</li>
+            })
+          }
+        </ul>
+      )
+    }
+
+    const App = () => {
+      const list = [
+        {
+          name: '11111'
+        },
+        {
+          name: '22222'
+        },
+        {
+          name: '33333'
+        }
+      ]
+      return (
+        <div className="layout">
+          <Vfor list={ list } />
+        </div>
+      )
+    }
+
+    ReactDOM.render(
+      <App />,
+      document.getElementById('app')
+    );
+
+  </script>
+</body>
+
+</html>
