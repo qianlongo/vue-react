@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+    const UseEffect = () => {
+      const [ count, setCount ] = React.useState(0)
+      const [ statTimer, setStatTimer ] = React.useState('未开始')
+      const [ name, setName ] = React.useState('boy')
+      
+      const onStartTimer = () => {
+        setCount(count + 1)
+        setName(Math.random())
+      }
+
+      const sendApi = () => {
+        console.log(name)
+        setTimeout(() => console.log('发送请求'), 1000)
+      }
+
+      React.useEffect(() => {
+        sendApi()
+      }, [])
+
+      React.useEffect(() => {
+        console.log('count', count)
+        if (count > 5) {
+          setStatTimer('已开始')
+        }
+      }, [ count ])
+
+      return (
+        <div className="use-state">
+          <button onClick={ onStartTimer }>计数开始倒计时{ count }</button>
+          <p>name: { name }</p>
+          <p>count: { count }</p>
+          <p>倒计时开始了吗?{ statTimer }</p>
+        </div>
+      )
+    }
+    const App = () => {
+      return (
+        <div className="layout">
+          <UseEffect />
+        </div>
+      )
+    }
+
+    ReactDOM.render(
+      <App />,
+      document.getElementById('app')
+    );
+
+  </script>
+</body>
+
+</html>
