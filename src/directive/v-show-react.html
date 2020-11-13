@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+      // 定义组件
+      const Show = (props) => {
+        const { show } = props
+        const display = show ? 'block' : 'none'
+        const style = {
+          display: display
+        }
+
+        return (
+          <div 
+            className="v-show" 
+            style={ style }
+          >
+            react 模拟vue v-show功能o'n
+          </div>
+        )
+      }
+
+      const Button = (props) => {
+        const { show, onClick } = props
+        const text = !show ? '显示' : '隐藏'
+
+        return (
+          <div className="button" onClick={ onClick }>{ text }</div>
+        )
+      }
+
+      const App = () => {
+        const [ buttonShow, setButtonShow ] = React.useState(false)
+        const onButtonClick = () => {
+          setButtonShow(!buttonShow)
+        }
+
+        return (
+          <div className="layout">
+            <Button show={ buttonShow } onClick={ onButtonClick }  />
+            <Show show={ buttonShow } />
+          </div>
+        )
+      }
+
+      ReactDOM.render(
+        <App />,
+        document.getElementById('app')
+      );
+
+    </script>
+  </body>
+</html>
